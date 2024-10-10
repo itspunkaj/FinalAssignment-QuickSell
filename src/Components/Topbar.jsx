@@ -3,11 +3,11 @@ import Dropdown from './Dropdown'
 
 function TopBar() {
   return (
-    <navbar >
-      <div className='topBar'>
+    <nav >
+      <div className='topBar container'>
         <Dropdown/>
       </div>
-    </navbar>
+    </nav>
   )
 }
 
