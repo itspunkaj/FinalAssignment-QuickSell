@@ -50,7 +50,7 @@ function Dropdown() {
             Ordering
           </span>
           <select onChange={handleOrderingChange}>
-            <option value="priorty">Priority</option>
+            <option value="priority">Priority</option>
             <option value="title">Title</option>
           </select>
         </div>

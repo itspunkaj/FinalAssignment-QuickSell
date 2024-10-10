@@ -14,17 +14,17 @@ function App() {
         const apiUrl = 'https://api.quicksell.co/v1/internal/frontend-assignment'
         fetch(apiUrl)
           .then((res) => {
-            console.log(res);
+            if(!res.ok) {
+              throw new Error("Something Went Wrong from the server.")
+            }
             return res.json();
           }).then((data) => {
-            console.log("Data ==> ", data);
             setTickets(data.tickets);
             setUsers(data.users);
             const priorities = new Set();
             const statuses = new Set();
             data.tickets.forEach(element => {
               priorities.add(element.priority);
-              // statuses.add(element.status)
             });
             statuses.add('Backlog')
             statuses.add('Todo')
@@ -33,15 +33,13 @@ function App() {
             statuses.add('Cancelled');
             const statusArray = [...statuses];
             const priorityArray = [...priorities];
-            // statusArray.sort();
             priorityArray.sort();
             priorityArray.reverse();
-            console.log(statusArray, priorityArray)
             setStatuses(statusArray);
             setPriorities(priorityArray);
           })
           .catch((error) => {
-            throw new error(error);
+            throw new Error(error);
           });
 
       }

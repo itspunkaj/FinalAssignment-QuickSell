@@ -26,7 +26,7 @@ export const statusIcons = {
   Done: DoneIcon,
   Cancelled: CancelledIcon,
 };
-const priorityArray = ['No Priority','Low Priority','Medium Priority','High Priority','Urgent']
+const priorityArray = ['No Priority', 'Low Priority', 'Medium Priority', 'High Priority', 'Urgent']
 
 function TaskBoard() {
   const { tickets, users, grouping, ordering, statuses, priorities } = useContext(Context);
@@ -44,7 +44,7 @@ function TaskBoard() {
                 <div className='actionBar'>
 
                   <div className='actionButton'>
-                    <img src={PlusIcon} alt='add task' />
+                    <img src={PlusIcon} alt='Add Task' />
                   </div>
                   <div className='actionButton'>
                     <img src={ThreeDot} alt='ThreeDot' />
@@ -52,12 +52,19 @@ function TaskBoard() {
                 </div>
               </div>
               <div className='columnContent'>
-                {                
-                tickets?.map((ticket, index) => {
-                  return (
-                    ticket.status === status && <Card key={index} ticket={ticket} />
-                  )
-                })}
+                {
+                  tickets?.sort((a, b) => {
+                    if (ordering === 'priority') {
+                      return b.priority - a.priority;
+                    } else if (ordering === 'title') {
+                      return a.title.localeCompare(b.title);
+                    }
+                    return 0;
+                  }).map((ticket, index) => {
+                    return (
+                      ticket.status === status && <Card key={index} ticket={ticket} />
+                    )
+                  })}
               </div>
             </div>
           );
@@ -85,7 +92,14 @@ function TaskBoard() {
                 </div>
               </div>
               <div className='columnContent'>
-                {tickets?.map((ticket, index) => {
+                {tickets?.sort((a, b) => {
+                  if (ordering === 'priority') {
+                    return b.priority - a.priority;
+                  } else if (ordering === 'title') {
+                    return a.title.localeCompare(b.title);
+                  }
+                  return 0;
+                }).map((ticket, index) => {
                   return (
                     ticket.priority === priority && <Card key={index} ticket={ticket} />
                   )
@@ -115,7 +129,14 @@ function TaskBoard() {
                 </div>
               </div>
               <div className='columnContent'>
-                {tickets?.map((ticket, index) => {
+                {tickets?.sort((a, b) => {
+                  if (ordering === 'priority') {
+                    return b.priority - a.priority;
+                  } else if (ordering === 'title') {
+                    return a.title.localeCompare(b.title);
+                  }
+                  return 0;
+                }).map((ticket, index) => {
                   return (
                     ticket.userId === user.id && <Card key={index} ticket={ticket} />
                   )
