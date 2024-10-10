@@ -24,7 +24,6 @@ function App() {
             const statuses = new Set();
             data.tickets.forEach(element => {
               priorities.add(element.priority);
-              // statuses.add(element.status)
             });
             statuses.add('Backlog')
             statuses.add('Todo')
