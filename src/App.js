@@ -35,6 +35,7 @@ function App() {
             const priorityArray = [...priorities];
             // statusArray.sort();
             priorityArray.sort();
+            priorityArray.reverse();
             console.log(statusArray, priorityArray)
             setStatuses(statusArray);
             setPriorities(priorityArray);
@@ -47,7 +48,7 @@ function App() {
       catch (error) {
         console.error(error);
       }
-      finally{
+      finally {
         setLoading(false);
       }
     }

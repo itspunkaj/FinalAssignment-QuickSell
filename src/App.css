@@ -1,9 +1,11 @@
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   width: 100vw;
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 13px;
+  color: #464545;
 }
 
 .container {
@@ -47,9 +49,16 @@ body {
 }
 
 .displayDropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   position: absolute;
-  bottom:-55px;
-  background-color: azure;
+  border-radius: 4px;
+  top: 30px;
+  padding: 10px;
+  border: 1px solid #00000014;
+  box-shadow: 0 0 4px 0 #918f8f4a;
+  background-color: #fafafa;
   width: 150px;
   transition: 0.2s ease-in;
 }
@@ -59,13 +68,18 @@ body {
   justify-content: space-around;
 }
 
+.displayDropdownGrid select {
+  border-radius: 2px;
+  border-color: #80808050;
+}
+
 .taskboardContainer {
-  width: 100%;
   background-color: #f4f4f4;
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
-  padding: 0 0.5%;
-  column-gap: 2%;
+  /* padding: 0 0.5%; */
+  padding-top: 0;
+  column-gap: 1.5%;
   grid-template-columns: 18% 18% 18% 18% 18%;
 }
 
@@ -94,13 +108,15 @@ body {
 .Card {
   padding: 10px;
   width: 95%;
-  height: 70px;
+  height: 100px;
   background-color: #fff;
   margin: 10px 0;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border: 0.5px solid #80808026;
+  box-shadow: 0 0 2px 0 #80808017;
 }
 
 .cardHeader {
@@ -110,8 +126,9 @@ body {
 }
 
 .ticket-id {
-  margin: 10px 0;
+  margin: 6px 0;
   font-weight: 500;
+  font-size: 12px;
   color: #353535b5;
 }
 
@@ -122,4 +139,40 @@ body {
 
 .cardTitle {
   display: flex;
+}
+
+.cardTags {
+  font-weight: 500;
+  font-size: 11px;
+  border: 0.5px solid #80808026;
+  color: #353535b5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px
+}
+
+@media screen and (max-width : 1200px) {
+  .taskboardContainer {
+    grid-template-columns: 23% 23% 23% 23%;
+  }
+  
+}
+
+
+@media screen and (max-width : 1090px) {
+  .taskboardContainer {
+    grid-template-columns: 31% 31% 31%;
+  }
+}
+@media screen and (max-width : 910px) {
+  .taskboardContainer {
+    grid-template-columns: 47% 47%;
+  }
+}
+@media screen and (max-width : 680px) {
+  .taskboardContainer {
+    grid-template-columns: 95%;
+  }
 }
