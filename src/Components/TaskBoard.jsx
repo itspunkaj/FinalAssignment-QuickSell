@@ -52,7 +52,8 @@ function TaskBoard() {
                 </div>
               </div>
               <div className='columnContent'>
-                {tickets?.map((ticket, index) => {
+                {                
+                tickets?.map((ticket, index) => {
                   return (
                     ticket.status === status && <Card key={index} ticket={ticket} />
                   )
